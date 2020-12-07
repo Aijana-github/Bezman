@@ -1,0 +1,15 @@
+<table>
+    <tr>
+        <td>Full name</td>
+        <td>Address</td>
+        <td>Phone</td>
+    </tr>
+    {% for customer in customers %}
+    <tr>
+    <td>{{ customer.full_name }}</td>
+    <td>{{ customer.address }}</td>
+    <td>{{ customer.phone }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
