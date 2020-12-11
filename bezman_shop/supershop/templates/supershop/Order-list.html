@@ -1,32 +1,24 @@
-<table>
-    <tr>
-        <th>Orders total</th>
-        <th>Orders delivered</th>
-        <th>Orders in process</th>
-        <th>Orders not delivered</th>
-    </tr>
-    <tr>
-        <td>{{ orders_count }}</td>
-        <td>{{ orders_delivered }}</td>
+{% extends 'supershop/base.html' %}
+{% block content %}
 
 
-    </tr>
-</table>
-
-<table>
+<table class="table table-hower table-dark">
+   <thead>
 <tr>
-    <td>Product Image</td>
-    <td>Product Name</td>
-    <td>Date</td>
-    <td>Status</td>
-    <td>Name</td>
-    <td>Customer</td>
+
+    <th scope="col">image</th>
+    <th scope="col">Products</th>
+      <th scope="col">Date Created</th>
+    <th scope="col">Status</th>
+      <th scope="col">Customer</th>
 </tr>
+   </thead>
+ <tbody>
 
 {% for order in orders %}
     <tr>
 
-        <td><img src="{{ order.product.image.url }}" width="50" height="50"></td>
+        <td scope="row"><img src="{{ order.product.image.url }}" width="50" height="50"></td>
         <td>{{ order.product.name }}</td>
         <td>{{ order.date_created }}</td>
         <td>{{ order.status }}</td>
@@ -34,4 +26,8 @@
 
     </tr>
 {% endfor %}
+</tbody>
 </table>
+
+{% endblock %}
+
