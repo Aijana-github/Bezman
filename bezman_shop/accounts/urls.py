@@ -16,6 +16,7 @@ urlpatterns = [
     path('login/',auth,name='login'),
     path('logout/',logout_page,name='logout'),
     path('reset-password/',PasswordResetView.as_view),
+    path('profile/',userProfile,name='profile'),
 
 
 ]
