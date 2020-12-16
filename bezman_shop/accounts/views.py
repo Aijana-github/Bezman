@@ -1,10 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import Group
 from django.shortcuts import render,redirect
 from .models import *
 from .models import *
 from .admin_only import admin_only
+from .forms import UserProfile
+
 
 
 
@@ -52,5 +55,18 @@ def auth(request):
 def logout_page(request):
     logout(request)
     return redirect('login')
+
+@login_required(login_url=['login'])
+def userProfile(request):
+    user = request.user.customer
+    form = UserProfile(instance=user)
+    if request.method == 'POST':
+        form = UserProfile(request.POST,request.FILES,instance=user)
+        form.save()
+    context = {'form':form}
+    return render(request,'accounts/accounts.html',context)
+
+
+
 
 
