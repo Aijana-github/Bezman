@@ -1,8 +1,7 @@
-<nav>
-    Hey, {{ request.user }}
+{% extends 'supershop/base.html' %}
+{% block content %}
 <button><a href="{% url 'logout' %}">logout</a> </button>
 
-</nav>
 <form action="" method="GET">
     {{ filter.form }}
     <input type="submit" name="Confirm">
@@ -36,3 +35,4 @@
  </tr>
 {% endfor %}
 </table>
+{% endblock %}
