@@ -7,7 +7,7 @@ class Customer(models.Model):
     full_name = models.CharField(max_length=70)
     address = models.CharField(max_length=50)
     phone = models.IntegerField()
-    image = models.ImageField(default='anonym.png')
+    image = models.ImageField(default='jacket.jpg')
 
 
     def __str__(self):
